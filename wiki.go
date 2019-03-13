@@ -3,20 +3,20 @@ package main
 import (
 	"html/template"
 	"io/ioutil"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 type Page struct {
 	Title string
-	Body []byte	// a byte slice
+	Body  []byte // a byte slice
 }
 
 func (p *Page) save() error {
 	filename := p.Title + ".txt"
-	return ioutil.WriteFile(filename, p.Body, 0600)	// 0600 is the octal integer literal,
-							// indicating the file should be created with
-							// read-write permissions for the current user only
+	return ioutil.WriteFile(filename, p.Body, 0600) // 0600 is the octal integer literal,
+	// indicating the file should be created with
+	// read-write permissions for the current user only
 }
 
 func loadPage(title string) (*Page, error) {
